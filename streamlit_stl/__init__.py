@@ -43,7 +43,7 @@ class STLComponent:
                         material: Literal['material', 'flat', 'wireframe'] = 'material',
                         auto_rotate: bool = False,
                         opacity: int = 1,
-                        cam_v_angle: int = 30,
+                        cam_v_angle: int = 60,
                         cam_h_angle: int = -90,
                         cam_distance: int = 0,
                         height: int = 500,
@@ -69,7 +69,7 @@ class STLComponent:
         opacity : int, optional
             Opacity of the 3D object, ranging from 0 (fully transparent) to 1 (fully opaque). Default is 1.
         cam_v_angle : int, optional
-            Vertical angle (in degrees) for the camera view. Default is 30.
+            Vertical angle (in degrees) for the camera view. Default is 60.
         cam_h_angle : int, optional
             Horizontal angle (in degrees) for the camera view. Default is -90.
         cam_distance : int, optional
@@ -136,7 +136,7 @@ class STLComponent:
                       material: Literal['material', 'flat', 'wireframe'] = 'material',
                       auto_rotate: bool = False,
                       opacity: int = 1, 
-                      cam_v_angle: int = 30,
+                      cam_v_angle: int = 60,
                       cam_h_angle: int = -90,
                       cam_distance: int = 0,
                       height: int = 500,
@@ -162,7 +162,7 @@ class STLComponent:
         opacity : int, optional
             Opacity of the 3D object, ranging from 0 (fully transparent) to 1 (fully opaque). Default is 1.
         cam_v_angle : int, optional
-            Vertical angle (in degrees) for the camera view. Default is 30.
+            Vertical angle (in degrees) for the camera view. Default is 60.
         cam_h_angle : int, optional
             Horizontal angle (in degrees) for the camera view. Default is -90.
         cam_distance : int, optional

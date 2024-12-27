@@ -23,7 +23,7 @@ if __name__ == "__main__":
     # camera position
     cols = st.columns(4)
     with cols[0]:
-        cam_v_angle = st.number_input("Camera Vertical Angle", value=30, key='cam_v_angle')
+        cam_v_angle = st.number_input("Camera Vertical Angle", value=60, key='cam_v_angle')
     with cols[1]:
         cam_h_angle = st.number_input("Camera Horizontal Angle", value=-90, key='cam_h_angle')
     with cols[2]:

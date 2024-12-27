@@ -34,7 +34,7 @@ success = stl_from_file(
     material='material',             # Material of the STL file ('material', 'flat', or 'wireframe')
     auto_rotate=True,                # Enable auto-rotation of the STL model
     opacity=1,                       # Opacity of the STL model (0 to 1)
-    cam_v_angle=30,                  # Vertical angle (in degrees) of the camera
+    cam_v_angle=60,                  # Vertical angle (in degrees) of the camera
     cam_h_angle=-90,                 # Horizontal angle (in degrees) of the camera
     cam_distance=None,               # Distance of the camera from the object (defaults to 3x bounding box size)
     height=500,                      # Height of the viewer frame
@@ -58,7 +58,7 @@ if file_input is not None:
         material='material',         # Material of the STL file ('material', 'flat', or 'wireframe')
         auto_rotate=True,            # Enable auto-rotation of the STL model
         opacity=1,                   # Opacity of the STL model (0 to 1)
-        cam_v_angle=30,              # Vertical angle (in degrees) of the camera
+        cam_v_angle=60,              # Vertical angle (in degrees) of the camera
         cam_h_angle=-90,             # Horizontal angle (in degrees) of the camera
         cam_distance=None,           # Distance of the camera from the object (defaults to 3x bounding box size)
         height=500,                  # Height of the viewer frame
