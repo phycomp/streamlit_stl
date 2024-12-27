@@ -45,11 +45,15 @@
       function onDataFromPython(event) {
         if (event.data.type !== "streamlit:render") return;
         let color = event.data.args.color;
-        console.log(color);
+        let file_path = event.data.args.file_path;
         let material = event.data.args.material;
         let auto_rotate = event.data.args.auto_rotate;
-        let file_path = event.data.args.file_path;
+        let opacity = event.data.args.opacity;
+        let cam_v_angle = event.data.args.cam_v_angle;
+        let cam_h_angle = event.data.args.cam_h_angle;
+        let cam_distance = event.data.args.cam_distance;
         let height = event.data.args.height;
+        let max_view_distance = event.data.args.max_view_distance;
         if (height !== undefined) setFrameHeight(height);
 
         // CALL stl-viewer here
@@ -58,6 +62,11 @@
         stlViewer.setAttribute('color', color);
         stlViewer.setAttribute('auto_rotate', auto_rotate);
         stlViewer.setAttribute('materialType', material);
+        stlViewer.setAttribute('opacity', opacity);
+        stlViewer.setAttribute('cam_v_angle', cam_v_angle);
+        stlViewer.setAttribute('cam_h_angle', cam_h_angle);
+        stlViewer.setAttribute('cam_distance', cam_distance);
+        stlViewer.setAttribute('max_view_distance', max_view_distance);
 
         // Clear any previous content in #stl_frame and append the new stl-viewer
         let stlFrame = document.getElementById('stl_frame');
