@@ -24,32 +24,47 @@ The original STL file is from [Printables](https://www.printables.com/it/model/5
 
 ### Display from file paths
 
-```
+```python
 import streamlit as st
 from streamlit_stl import stl_from_file
 
-success = stl_from_file(file_path=path_to_conf,     # path to the stl file
-                        color='#FF9900',            # color of the stl file
-                        material='material',        # material of the stl file, either 'material' or 'wireframe'
-                        auto_rotate=True,           # auto rotate the stl file
-                        height='500',               # height of the viewer frame
-                        key=None)                   # streamlit component key
+success = stl_from_file(
+    file_path=path_to_conf,          # Path to the STL file
+    color='#FF9900',                 # Color of the STL file (hexadecimal value)
+    material='material',             # Material of the STL file ('material', 'flat', or 'wireframe')
+    auto_rotate=True,                # Enable auto-rotation of the STL model
+    opacity=1,                       # Opacity of the STL model (0 to 1)
+    cam_v_angle=30,                  # Vertical angle (in degrees) of the camera
+    cam_h_angle=-90,                 # Horizontal angle (in degrees) of the camera
+    cam_distance=None,               # Distance of the camera from the object (defaults to 3x bounding box size)
+    height=500,                      # Height of the viewer frame
+    max_view_distance=1000,          # Maximum viewing distance for the camera
+    key=None                         # Streamlit component key
+)
 ```
 
 ### Display from file text
 
-```
+```python
 import streamlit as st
 from streamlit_stl import stl_from_text
 
-file_input = st.file_uploader("Or upload a STL file ", type=["stl"])
+file_input = st.file_uploader("Or upload an STL file", type=["stl"])
 
-success = stl_from_text(text=file_input.getvalue(), # text of te stl file
-                        color='#FF9900',            # color of the stl file
-                        material='material',        # material of the stl file, either 'material' or 'wireframe'
-                        auto_rotate=True,           # auto rotate the stl file
-                        height='500',               # height of the viewer frame
-                        key=None)                   # streamlit component key
+if file_input is not None:
+    success = stl_from_text(
+        text=file_input.getvalue(),  # Content of the STL file as text
+        color='#FF9900',             # Color of the STL file (hexadecimal value)
+        material='material',         # Material of the STL file ('material', 'flat', or 'wireframe')
+        auto_rotate=True,            # Enable auto-rotation of the STL model
+        opacity=1,                   # Opacity of the STL model (0 to 1)
+        cam_v_angle=30,              # Vertical angle (in degrees) of the camera
+        cam_h_angle=-90,             # Horizontal angle (in degrees) of the camera
+        cam_distance=None,           # Distance of the camera from the object (defaults to 3x bounding box size)
+        height=500,                  # Height of the viewer frame
+        max_view_distance=1000,      # Maximum viewing distance for the camera
+        key=None                     # Streamlit component key
+    )
 ```
 
 The functions return a boolean value indicating if the program was able to write and read the files.
