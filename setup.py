@@ -6,7 +6,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name='streamlit_stl',
-    version='0.0.3',
+    version='0.0.4',
     author='Luca Monari',
     author_email='Luca.Monari@mr.mpg.de',
     url="https://github.com/Lucandia/streamlit_stl",
