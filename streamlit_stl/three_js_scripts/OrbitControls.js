@@ -315,13 +315,13 @@
 
 			function rotateLeft( angle ) {
 
-				sphericalDelta.theta -= angle;
+				sphericalDelta.theta += angle;
 
 			}
 
 			function rotateUp( angle ) {
 
-				sphericalDelta.phi -= angle;
+				sphericalDelta.phi += angle;
 
 			}
 
