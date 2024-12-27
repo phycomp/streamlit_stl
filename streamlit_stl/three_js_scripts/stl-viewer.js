@@ -20,10 +20,15 @@ class STLViewer extends HTMLElement {
     const model = this.getAttribute('model');
     const color = parseInt(this.getAttribute('color').replace("#","0x"), 16);
     const auto_rotate = this.getAttribute('auto_rotate');
+    const opacity = this.getAttribute('opacity');
     let materialType = this.getAttribute('materialType');
+    const cam_v_angle = Number(this.getAttribute('cam_v_angle'));
+    const cam_h_angle = Number(this.getAttribute('cam_h_angle'));
+    let cam_distance = Number(this.getAttribute('cam_distance'));
+    const max_view_distance = Number(this.getAttribute('max_view_distance'));
     
 
-    let camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 1, 1000);
+    let camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 1, max_view_distance);
     let renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
@@ -44,10 +49,17 @@ class STLViewer extends HTMLElement {
 
 
     new THREE.STLLoader().load(model, (geometry) => {
-      let material = new THREE.MeshPhongMaterial({
+      let material = new THREE.MeshPhysicalMaterial({
         color: color,
-        specular: 100,
-        shininess: 100,
+        // specular: "0x000000",
+        opacity: opacity, 
+        transparent: true,
+      });
+
+      let flat = new THREE.MeshBasicMaterial({
+        color: color,
+        opacity: opacity, 
+        transparent: true,
       });
 
       let wireframe = new THREE.MeshBasicMaterial({
@@ -58,15 +70,20 @@ class STLViewer extends HTMLElement {
 
       if (materialType == 'material') {
         materialType = material;
-      } else {
+      } else if (materialType == 'flat') {
+        materialType = flat;
+      }
+      else {
         materialType = wireframe;
       }
         
       let mesh = new THREE.Mesh(geometry, materialType);
       //mesh = THREE.SceneUtils.createMultiMaterialObject(geometry, [material, lines]);
 
-      //rotation is represented in radians - this rotats 90 degrees.
-      mesh.rotation.x = -1*(Math.PI / 2);
+      // avoid singularities in the rotation matrix with vertical angles of 0 and 180 degrees
+      if (cam_v_angle % 180 == 0) {
+        mesh.rotation.z = cam_h_angle * (Math.PI / 180);
+      }
       scene.add(mesh);
 
       let middle = new THREE.Vector3();
@@ -74,10 +91,17 @@ class STLViewer extends HTMLElement {
       geometry.boundingBox.getCenter(middle);
       mesh.geometry.applyMatrix4(new THREE.Matrix4().makeTranslation(-middle.x, -middle.y, -middle.z));
       let largestDimension = Math.max(geometry.boundingBox.max.x, geometry.boundingBox.max.y, geometry.boundingBox.max.z)
-      camera.position.z = largestDimension * 1.5 ;
-      camera.position.y = 120;
+      if (cam_distance == 0) {
+        cam_distance = largestDimension * 3;
+      }
+
+      // Convert degrees to radians
+      const phi = cam_v_angle * (Math.PI / 180);
+      const theta = cam_h_angle * (Math.PI / 180);
+      camera.position.x = cam_distance * Math.sin(phi) * Math.cos(theta);
+      camera.position.y = cam_distance * Math.sin(phi) * Math.sin(theta);
+      camera.position.z = cam_distance * Math.cos(phi);
       camera.lookAt(new THREE.Vector3(0,0,0)); 
-      //camera.position.x = 10;
 
       if (auto_rotate == 'true') {
         controls.autoRotate = true;
