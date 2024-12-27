@@ -141,7 +141,7 @@
 
 				const offset = new THREE.Vector3(); // so camera.up is the orbit axis
 
-				const quat = new THREE.Quaternion().setFromUnitVectors( object.up, new THREE.Vector3( 0, 1, 0 ) );
+				const quat = new THREE.Quaternion().setFromUnitVectors( object.up, new THREE.Vector3( 0, 0, 1 ) );
 				const quatInverse = quat.clone().invert();
 				const lastPosition = new THREE.Vector3();
 				const lastQuaternion = new THREE.Quaternion();

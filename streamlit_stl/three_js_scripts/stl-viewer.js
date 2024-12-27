@@ -101,6 +101,7 @@ class STLViewer extends HTMLElement {
       camera.position.x = cam_distance * Math.sin(phi) * Math.cos(theta);
       camera.position.y = cam_distance * Math.sin(phi) * Math.sin(theta);
       camera.position.z = cam_distance * Math.cos(phi);
+      camera.up.set( 0, 0, 1 );
       camera.lookAt(new THREE.Vector3(0,0,0)); 
 
       if (auto_rotate == 'true') {
