@@ -43,6 +43,7 @@ class STLComponent:
                         material: Literal['material', 'flat', 'wireframe'] = 'material',
                         auto_rotate: bool = False,
                         opacity: int = 1,
+                        shininess: int = 100,
                         cam_v_angle: int = 60,
                         cam_h_angle: int = -90,
                         cam_distance: int = 0,
@@ -68,6 +69,8 @@ class STLComponent:
             Whether to enable auto-rotation of the 3D object. Default is False.
         opacity : int, optional
             Opacity of the 3D object, ranging from 0 (fully transparent) to 1 (fully opaque). Default is 1.
+        shininess : int, optional
+            How shiny the specular highlight is, when using the 'material' material style. Default is 100.
         cam_v_angle : int, optional
             Vertical angle (in degrees) for the camera view. Default is 60.
         cam_h_angle : int, optional
@@ -122,6 +125,7 @@ class STLComponent:
                         material=material, 
                         auto_rotate=bool(auto_rotate), 
                         opacity=opacity, 
+                        shininess=shininess,
                         cam_v_angle=cam_v_angle,
                         cam_h_angle=cam_h_angle,
                         cam_distance=cam_distance,
@@ -136,6 +140,7 @@ class STLComponent:
                       material: Literal['material', 'flat', 'wireframe'] = 'material',
                       auto_rotate: bool = False,
                       opacity: int = 1, 
+                      shininess: int = 100,
                       cam_v_angle: int = 60,
                       cam_h_angle: int = -90,
                       cam_distance: int = 0,
@@ -161,6 +166,8 @@ class STLComponent:
             Whether to enable auto-rotation of the 3D object. Default is False.
         opacity : int, optional
             Opacity of the 3D object, ranging from 0 (fully transparent) to 1 (fully opaque). Default is 1.
+        shininess : int, optional
+            How shiny the specular highlight is, when using the 'material' material style. Default is 100.
         cam_v_angle : int, optional
             Vertical angle (in degrees) for the camera view. Default is 60.
         cam_h_angle : int, optional
@@ -193,6 +200,7 @@ class STLComponent:
                                   material=material, 
                                   auto_rotate=auto_rotate, 
                                   opacity=opacity,
+                                  shininess=shininess,
                                   height=height, 
                                   cam_v_angle=cam_v_angle,
                                   cam_h_angle=cam_h_angle,

@@ -37,6 +37,7 @@ if __name__ == "__main__":
                     auto_rotate=auto_rotate,
                     opacity=opacity,
                     height=height,
+                    shininess=100,
                     cam_v_angle=cam_v_angle,
                     cam_h_angle=cam_h_angle,
                     cam_distance=cam_distance,

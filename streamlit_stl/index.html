@@ -49,6 +49,7 @@
         let material = event.data.args.material;
         let auto_rotate = event.data.args.auto_rotate;
         let opacity = event.data.args.opacity;
+        let shininess = event.data.args.shininess;
         let cam_v_angle = event.data.args.cam_v_angle;
         let cam_h_angle = event.data.args.cam_h_angle;
         let cam_distance = event.data.args.cam_distance;
@@ -63,6 +64,7 @@
         stlViewer.setAttribute('auto_rotate', auto_rotate);
         stlViewer.setAttribute('materialType', material);
         stlViewer.setAttribute('opacity', opacity);
+        stlViewer.setAttribute('shininess', shininess);
         stlViewer.setAttribute('cam_v_angle', cam_v_angle);
         stlViewer.setAttribute('cam_h_angle', cam_h_angle);
         stlViewer.setAttribute('cam_distance', cam_distance);

@@ -21,12 +21,13 @@ class STLViewer extends HTMLElement {
     const color = parseInt(this.getAttribute('color').replace("#","0x"), 16);
     const auto_rotate = this.getAttribute('auto_rotate');
     const opacity = this.getAttribute('opacity');
+    const shininess = Number(this.getAttribute('shininess'));
     let materialType = this.getAttribute('materialType');
     const cam_v_angle = Number(this.getAttribute('cam_v_angle'));
     const cam_h_angle = Number(this.getAttribute('cam_h_angle'));
     let cam_distance = Number(this.getAttribute('cam_distance'));
     const max_view_distance = Number(this.getAttribute('max_view_distance'));
-    
+
 
     let camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 1, max_view_distance);
     let renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -46,12 +47,12 @@ class STLViewer extends HTMLElement {
     let dirLight = new THREE.DirectionalLight(0xffffff,1.5);
     dirLight.position.set(-1,0,-1);
     scene.add(dirLight);
-
+    
 
     new THREE.STLLoader().load(model, (geometry) => {
-      let material = new THREE.MeshPhysicalMaterial({
+      let material = new THREE.MeshPhongMaterial({
         color: color,
-        // specular: "0x000000",
+        shininess: shininess,
         opacity: opacity, 
         transparent: true,
       });
